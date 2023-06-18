@@ -3,10 +3,10 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
-import PopupProfile from "./PopupProfile";
-import PopupAvatar from "./PopupAvatar";
-import PopupCard from "./PopupCard";
-import PopupImage from "./PopupImage";
+import ProfilePopup from "./ProfilePopup";
+import AvatarPopup from "./AvatarPopup";
+import CardPopup from "./CardPopup";
+import ImagePopup from "./ImagePopup";
 
 function App() {
   const [isEditProfilePopupOpen, editProfilePopupOpen] = React.useState(false);
@@ -49,25 +49,25 @@ function App() {
       <PopupWithForm
         name={"avatar"}
         title={"Обновить аватар"}
-        children={<PopupAvatar />}
+        children={<AvatarPopup />}
         isOpen={isEditAvatarPopupOpen}
         onClose={handleCloseAllPopups}
       />
       <PopupWithForm
         name={"profile"}
         title={"Редактировать профиль"}
-        children={<PopupProfile />}
+        children={<ProfilePopup />}
         isOpen={isEditProfilePopupOpen}
         onClose={handleCloseAllPopups}
       />
       <PopupWithForm
         name={"card"}
         title={"Новое место"}
-        children={<PopupCard />}
+        children={<CardPopup />}
         isOpen={isAddPlacePopupOpen}
         onClose={handleCloseAllPopups}
       />
-      <PopupImage
+      <ImagePopup
         card={selectedCard}
         isOpen={isImagePopupOpen}
         onClose={handleCloseAllPopups}
