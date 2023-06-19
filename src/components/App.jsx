@@ -52,6 +52,7 @@ function App() {
         children={<AvatarPopup />}
         isOpen={isEditAvatarPopupOpen}
         onClose={handleCloseAllPopups}
+        buttonText={"Сохранить"}
       />
       <PopupWithForm
         name={"profile"}
@@ -59,6 +60,7 @@ function App() {
         children={<ProfilePopup />}
         isOpen={isEditProfilePopupOpen}
         onClose={handleCloseAllPopups}
+        buttonText={"Сохранить"}
       />
       <PopupWithForm
         name={"card"}
@@ -66,6 +68,7 @@ function App() {
         children={<CardPopup />}
         isOpen={isAddPlacePopupOpen}
         onClose={handleCloseAllPopups}
+        buttonText={"Сохранить"}
       />
       <ImagePopup
         card={selectedCard}

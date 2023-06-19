@@ -16,13 +16,20 @@ export default function Main({
 
   React.useEffect(() => {
     (async () => {
-      const { name, about, avatar } = await API.getUserInfo();
-      setUserName(name);
-      setUserDescription(about);
-      setUserAvatar(avatar);
-
-      const initialCards = await API.getInitialCards();
-      setCards(initialCards);
+      try {
+        const { name, about, avatar } = await API.getUserInfo();
+        setUserName(name);
+        setUserDescription(about);
+        setUserAvatar(avatar);
+      } catch (err) {
+        console.log(err);
+      }
+      try {
+        const initialCards = await API.getInitialCards();
+        setCards(initialCards);
+      } catch (err) {
+        console.log(err);
+      }
     })();
   }, []);
 
@@ -53,7 +60,7 @@ export default function Main({
 
       <section className="gallery">
         {cards.map((card) => {
-          return <Card card={card} onCardClick={onCardClick} />;
+          return <Card card={card} onCardClick={onCardClick} key={card._id} />;
         })}
       </section>
     </main>

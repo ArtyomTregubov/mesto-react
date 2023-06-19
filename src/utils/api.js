@@ -9,9 +9,15 @@ class Api {
   }
 
   async _send(url, payload) {
-    const res = await fetch(url, { ...payload, ...this.headers });
-    if (res.ok) return await res.json();
-    throw new Error(`Ошибка ${payload.method} url=${url} status=${res.status}`);
+    try {
+      const res = await fetch(url, { ...payload, ...this.headers });
+      if (res.ok) return await res.json();
+      throw new Error(
+        `Ошибка ${payload.method} url=${url} status=${res.status}`
+      );
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async getInitialCards() {
