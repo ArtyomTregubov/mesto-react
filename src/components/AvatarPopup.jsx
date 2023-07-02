@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AvatarPopup() {
+export default function AvatarPopup({ avatarRef }) {
   return (
     <>
       <input
@@ -10,6 +10,7 @@ export default function AvatarPopup() {
         placeholder="Ссылка на картинку"
         required
         id="url"
+        ref={avatarRef}
       />
       <span className="popup__input-error" id="url-error"></span>
     </>

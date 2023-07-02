@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CardPopup() {
+export default function CardPopup({ cardNameRef, cardLinkRef }) {
   return (
     <>
       <input
@@ -12,6 +12,7 @@ export default function CardPopup() {
         minLength="2"
         maxLength="30"
         id="image-name"
+        ref={cardNameRef}
       />
       <span className="popup__input-error" id="image-name-error"></span>
       <input
@@ -21,6 +22,7 @@ export default function CardPopup() {
         placeholder="Ссылка на картинку"
         required
         id="link"
+        ref={cardLinkRef}
       />
       <span className="popup__input-error" id="link-error"></span>
     </>
