@@ -1,5 +1,3 @@
-import { HEADERS, cardsURL, userURL, changeAvatarUrl } from "./constants";
-
 class Api {
   constructor(headers, cardsURL, userURL, changeAvatarUrl) {
     this.headers = headers;
@@ -66,5 +64,18 @@ class Api {
     return await this._send(url, payload);
   }
 }
+
+const TOKEN = "85f45188-40df-476e-9439-a079efcb1c8d";
+const HEADERS = {
+  headers: {
+    authorization: TOKEN,
+    "Content-Type": "application/json",
+  },
+};
+const cohortId = "cohort-66";
+const cardsURL = `https://mesto.nomoreparties.co/v1/${cohortId}/cards`;
+export const userURL = `https://nomoreparties.co/v1/${cohortId}/users/me`;
+export const changeAvatarUrl = `${userURL}/avatar`;
+
 const API = new Api(HEADERS, cardsURL, userURL, changeAvatarUrl);
 export default API;

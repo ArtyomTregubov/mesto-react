@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ProfilePopup({
+export default function ProfileFormFields({
   name,
   description,
   onChangeName,

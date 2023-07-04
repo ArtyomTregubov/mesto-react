@@ -1,12 +1,12 @@
 import React from "react";
 
 import PopupWithForm from "./PopupWithForm";
-import ProfilePopup from "./ProfilePopup";
+import ProfileFormFields from "./ProfileFormFields";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
-  const [name, setName] = React.useState();
-  const [description, setDescription] = React.useState();
+  const [name, setName] = React.useState("");
+  const [description, setDescription] = React.useState("");
 
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -21,17 +21,14 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   React.useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
-  }, [currentUser]);
+  }, [isOpen, currentUser]);
 
   function handleSubmit(e) {
     e.preventDefault();
-
     onUpdateUser({
       name,
       about: description,
     });
-    setName(name);
-    setDescription(description);
   }
 
   return (
@@ -39,17 +36,16 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       name={"profile"}
       title={"Редактировать профиль"}
       onSubmit={handleSubmit}
-      children={
-        <ProfilePopup
-          name={name}
-          description={description}
-          onChangeName={onChangeName}
-          onChangeDescription={onChangeDescription}
-        />
-      }
       isOpen={isOpen}
       onClose={onClose}
       buttonText={"Сохранить"}
-    />
+    >
+      <ProfileFormFields
+        name={name}
+        description={description}
+        onChangeName={onChangeName}
+        onChangeDescription={onChangeDescription}
+      />
+    </PopupWithForm>
   );
 }
